@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "can-bus-sniffer-parser"
+version = "0.1.0"
+description = "CAN bus sniffer, DBC parser, and intrusion-detection demo for automotive cybersecurity."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Thiago Ricardo" }]
+keywords = ["can", "can-bus", "automotive", "cybersecurity", "ids", "dbc", "embedded"]
+dependencies = [
+    "python-can>=4.0",
+    "cantools>=39.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-cov>=4.0"]
+
+[project.scripts]
+can-sniffer = "can_sniffer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
